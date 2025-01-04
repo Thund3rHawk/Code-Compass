@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google'
 import "./globals.css";
 import { CopilotKit } from "@copilotkit/react-core";
 import Navbar from "@/components/shared/Navbar";
+import CodeProvider from "@/context/CodeContext";
 
 const roboto = Roboto({
   weight: '400',
@@ -24,11 +25,12 @@ export default function RootLayout({
       <body
         className={roboto.className}
       >
-
-        <CopilotKit runtimeUrl="/api/copilotkit">
-          <Navbar/>
-          {children}
-        </CopilotKit>
+        <CodeProvider>
+          <CopilotKit runtimeUrl="/api/copilotkit">
+            <Navbar/>
+            {children}
+          </CopilotKit>
+        </CodeProvider>
       </body>
     </html>
   );

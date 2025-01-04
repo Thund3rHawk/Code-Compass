@@ -1,11 +1,11 @@
 export const themes = [
     {
-        value: 'monokai',
-        name: 'Monokai'
+        value: 'vs-dark',
+        name: 'Dark Mode'
     },
     {
-        value: 'github-dark',
-        name: 'Github Dark'
+        value: 'light',
+        name: 'Light Mode'
     }
 ]
 
@@ -20,15 +20,15 @@ export const languages = [
         name: 'C++'
     },
     {
-        value: 'js',
+        value: 'javascript',
         name: 'Javascript'
     },
     {
-        value: 'ts',
+        value: 'typescript',
         name: 'Typescript'
     },
     {
-        value: 'py',
+        value: 'python',
         name: 'Python'
     },
 ]

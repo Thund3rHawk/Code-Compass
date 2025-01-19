@@ -4,6 +4,7 @@ import "./globals.css";
 import { CopilotKit } from "@copilotkit/react-core";
 import Navbar from "@/components/shared/Navbar";
 import CodeProvider from "@/context/CodeContext";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   weight: '400',
@@ -29,6 +30,7 @@ export default function RootLayout({
           <CopilotKit runtimeUrl="/api/copilotkit">
             <Navbar/>
             {children}
+            <Toaster />
           </CopilotKit>
         </CodeProvider>
       </body>

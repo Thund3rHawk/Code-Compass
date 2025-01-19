@@ -12,6 +12,7 @@ import { Role, TextMessage } from "@copilotkit/runtime-client-gql";
 import WarningCard from "./WarningCard";
 import ErrorCard from "./ErrorCard";
 import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@radix-ui/react-toast";
 // import ReactMarkdown from 'react-markdown'
 // import Markdown from "react-markdown";
 
@@ -48,22 +49,26 @@ const CodeArea = () => {
       toast({
         title: "Code Submitted Successfuly",
         description: "Analyzing the code may have some problem you have to figure it from your own.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
       })
-
+      
       appendMessage(
         new TextMessage({
           content: `Analyze the following code and identify any warnings or errors: \n\n${code} \n\nPlease send results in the format **Error:** and **Warning:** explicitly dont make any bullet points also show a paragraph point only the errors and warnings dont need any description dont show any code snippet.`,
           role: Role.User,
         })
       );
-      
+
+      // @ts-ignore
       let analysisResult = visibleMessages[1].content || '**Error:** and **Warning:**';      
       // console.log(analysisResult);
 
+      // @ts-ignore
       const error = analysisResult.match(/\*\*Error:\*\*(.*?)(?=\*\*|$)/gs)?.map(e => 
         e.replace(/\*\*Error:\*\*/, '').trim()
       ).filter(Boolean) || [];
       
+      // @ts-ignore
       const warning = analysisResult.match(/\*\*Warning:\*\*(.*?)(?=\*\*|$)/gs)?.map(w => 
         w.replace(/\*\*Warning:\*\*/, '').trim()
       ).filter(Boolean) || [];
